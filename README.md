@@ -24,3 +24,9 @@ scrapy crawl quotes
 * 修改request agent
 * 修改response status
 
+### 3. images360：ItemPipelines的用法
+
+* 保存爬取的图片到本地
+* 保存相关信息到mongodb
+* 保存相关信息到mysql
+
