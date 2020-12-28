@@ -9,5 +9,8 @@
 
 *  spider保存到数据库
 
+### 2. scrapydownloadertest：中间件的用法
 
+* 修改request agent
+* 修改response status
 
