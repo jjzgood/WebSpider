@@ -30,3 +30,13 @@ scrapy crawl quotes
 * 保存相关信息到mongodb
 * 保存相关信息到mysql
 
+### 4. bilibili：爬取bilibili up的视频信息，并根据标题生成云图
+
+### 5. cloudword：生成云图代码
+
+
+
+
+
+
+
