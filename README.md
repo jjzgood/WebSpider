@@ -34,6 +34,10 @@ scrapy crawl quotes
 
 ### 5. cloudword：生成云图代码
 
+### 6. scrapypyppeteer：动态页面爬取和分布式爬虫
+
+
+
 
 
 

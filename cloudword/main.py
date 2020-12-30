@@ -8,7 +8,7 @@ class GenWordImage:
     """
     生成词云
     """
-    def __init__(self,host,port,db,collection,bgimage,save_name):
+    def __init__(self,host,port,db,collection,bgimage,save_name,description=False):
         """
         :param host: mongo地址
         :param port: 端口
@@ -16,6 +16,7 @@ class GenWordImage:
         :param collection:
         :param bgimage: 生成图片的背景图
         :param save_name: 生成的图片保存的名称
+        :param description: 是否添加description进行分析
         """
         self.host = host
         self.port = port
@@ -24,6 +25,7 @@ class GenWordImage:
         self.bgimage = bgimage
         self.save_name = save_name
         self.stopword = self.stopwords('ChineseStopWords.txt')
+        self.description = description
 
     def mongo_data(self):
         client = pymongo.MongoClient(host=self.host,port=self.port)
@@ -42,9 +44,11 @@ class GenWordImage:
         words = {}
         for item in self.mongo_data():
             title = item['title']
-            # description = item['description']
-            # text = title + description
-            text = title
+            if self.description:
+                description = item['description']
+                text = title + description
+            else:
+                text = title
             for word in jieba.cut(text):
                 if word not in self.stopword:
                     words[word] = words.get(word, 0) + 1
@@ -82,9 +86,10 @@ if __name__ == '__main__':
         host='localhost',
         port=27017,
         db='uploader',
-        collection='chineseboy',
-        bgimage = 'images/heart.jpg',
-        save_name='chineseboy'
+        bgimage='images/heart.jpg',
+        collection='xiaolihelp',
+        save_name='xiaolihelp',
+        description = True
     )
     task.gen_image()
 
